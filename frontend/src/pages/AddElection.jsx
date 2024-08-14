@@ -106,7 +106,7 @@ const AddElection = () => {
                 Enter the details about
               </span>
               <span className='text-3xl'>
-                The Election page
+                The Election 
               </span>
             </p>
             <Inputbox title='Election Name' hint='World - 2024' onchange={e => setElectionName(e.target.value)} />
