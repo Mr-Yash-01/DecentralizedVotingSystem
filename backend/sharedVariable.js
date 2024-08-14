@@ -1,11 +1,16 @@
+require('dotenv').config({ path: '../.env' });  // Specify the relative path
+// Ensure this line is at the very top
+
 const { ethers } = require('ethers');
 const contract = require('./Lock.json');
 
+const CONTRACTADDRESS = process.env.CONTRACT_ADDRESS;
+const INFURAKEY = process.env.PROVIDER_LINK;
+const PRIVATEKEY = process.env.WALLET_PRIVATE_KEY;
+
 // Contract address and provider
-const contractAddress = '0xfa77d941479A9a0B59C67510983df09dA59E2b25';
-const infuraProvider = new ethers.JsonRpcProvider(
-    'https://sepolia.infura.io/v3/cdf2a29bbe4a45218e91aaaa2aa87b9a'
-);
+const contractAddress = CONTRACTADDRESS; // Use the environment variable
+const infuraProvider = new ethers.JsonRpcProvider(INFURAKEY); // Use the environment variable
 
 // Contract instance with provider
 const contractInstance = new ethers.Contract(
@@ -15,8 +20,7 @@ const contractInstance = new ethers.Contract(
 );
 
 // Use a private key to create a signer (for Node.js)
-const privateKey = '5c93769363cbb7a9abbbdfeae15f18fa44d0cfe08e64332d491fc11b10b366f0'; // Replace with your actual private key
-const wallet = new ethers.Wallet(privateKey, infuraProvider);
+const wallet = new ethers.Wallet(PRIVATEKEY, infuraProvider); // Use the environment variable
 
 // Contract instance with signer
 const sendContract = new ethers.Contract(

@@ -4,6 +4,8 @@ const cors = require('cors')
 const signupRouter = require('./routes/Signup')
 const signinRouter = require('./routes/Signin')
 const dashboardRouter = require('./routes/Dashboard')
+require('dotenv').config({ path: '../.env' });  // Specify the relative path
+
 
 app.use(express.json());
 app.use(cors());
